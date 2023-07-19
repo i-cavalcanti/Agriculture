@@ -1,0 +1,10 @@
+pymongo
+pandas
+numpy
+matplotlib
+jupyterlab
+seaborn
+statsmodels
+scikit-learn
+geopandas
+pysal
