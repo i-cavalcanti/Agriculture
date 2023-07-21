@@ -11,10 +11,6 @@ sys.path.append('C:/Users/i.cavalcanti/Progetti_condivisi/clustering_copernicus/
 
 st.set_page_config(layout='wide') # wide, centered
 
-frequency_client = MongoClient('mongodb://localhost:27017')['copernicus_similarity_comuni_puglia']['frequency_1']
-cluster_client = MongoClient('mongodb://localhost:27017')['copernicus_similarity_comuni_puglia']['clusters_1']
-shp_region = gpd.read_file('C:/Users/i.cavalcanti/Progetti_condivisi/clustering_copernicus/Clustering/DBSCAN/puglia_shape.shp')
-
 def main_clustering():
     #Title
     st.write("""
@@ -35,27 +31,6 @@ def main_clustering():
     st.sidebar.multiselect("**Choose the data domain**", key='selected_collections', options=collections, default=collections[0])
     st.sidebar.selectbox("**Select year**", key='selected_year', options=year_list)
     st.sidebar.radio("**Select season**", key='selected_season', options=['Winter', 'Spring', 'Summer', 'Autumn'])
-    
-    if collections[0] in st.session_state.selected_collections:
-        st.sidebar.write("Atmosphere variables:")
-        st.sidebar.markdown("- Dust")
-        st.sidebar.markdown("- PM10 Aerosol")
-        st.sidebar.markdown("- PM2.5 Aerosol")
-        st.sidebar.markdown("- Nitrogen Monoxide")
-        st.sidebar.markdown("- Nitrogen Dioxide")
-        st.sidebar.markdown("- Sulphur Dioxide")
-        st.sidebar.markdown("- Ozone")
-    if collections[1] in st.session_state.selected_collections:
-        st.sidebar.write("Climate variables:")
-        st.sidebar.markdown("- Cloud Cover")
-        st.sidebar.markdown("- Precipitation")
-        st.sidebar.markdown("- Precipitation Duration")
-        st.sidebar.markdown("- Relative Humidity")
-        st.sidebar.markdown("- Solar Radiation")
-        st.sidebar.markdown("- Temperature Air")
-        st.sidebar.markdown("- Vapour Pressure")
-        st.sidebar.markdown("- Wind Speed")
-    
 
     #Main - variables 
     st.write('#### Choose one city of reference in Puglia')
